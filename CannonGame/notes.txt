@@ -1,6 +1,6 @@
 ﻿Responsiblities:
 
-ConsoleWrapper
+ConsoleIO
 
 Given the program requires an angle from the user
 When the console object write is called

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace CannonGame;
 
-namespace CannonGame
+public interface ITargetGenerator
 {
-    internal interface ITargetGenerator
-    {
-    }
+    Point GenerateTarget(int angle, int velocity);
 }
