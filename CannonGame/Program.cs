@@ -1,9 +1,18 @@
-﻿namespace CannonGame;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using CannonGame.Registrations;
 
-internal class Program
+namespace CannonGame;
+
+public class Program
 {
     public static void Main(string[] args)
     {
-        Console.WriteLine("Cannon Game");
+        Host.CreateDefaultBuilder()
+            .ConfigureServices(services => services.AddSingleton<IExecutor, Executor>())
+            .ConfigureServices(ContainerBuilder.RegisterServices)
+            .Build()
+            .Services.GetService<IExecutor>()!
+            .Execute();
     }
 }

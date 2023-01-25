@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CannonGame", "CannonGame\CannonGame.csproj", "{F0671C5D-6081-4A9C-B479-A330F6772FAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CannonGame", "CannonGame\CannonGame.csproj", "{F0671C5D-6081-4A9C-B479-A330F6772FAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CannonGame.Tests", "CannonGame.Tests\CannonGame.Tests.csproj", "{BF7E1173-AB66-4650-955B-CE249B8A6A57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F0671C5D-6081-4A9C-B479-A330F6772FAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0671C5D-6081-4A9C-B479-A330F6772FAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F0671C5D-6081-4A9C-B479-A330F6772FAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF7E1173-AB66-4650-955B-CE249B8A6A57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF7E1173-AB66-4650-955B-CE249B8A6A57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF7E1173-AB66-4650-955B-CE249B8A6A57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF7E1173-AB66-4650-955B-CE249B8A6A57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

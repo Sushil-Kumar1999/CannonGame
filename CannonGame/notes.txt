@@ -1,0 +1,95 @@
+﻿Responsiblities:
+
+ConsoleWrapper
+
+Given the program requires an angle from the user
+When the console object write is called
+Then it will print out "Please enter an angle between 1 and 90"
+
+Given the user has entered an angle of 5
+When the console object read is called
+Then it will return "5"
+
+Given the program requires a velocity from the user
+When the console object write is called
+Then it will print out "Please enter a velocity between 1 and 90"
+
+Given the user has entered an velocity of 5
+When the console object read is called
+Then it will return "5"
+
+Given the user has hit the target after 5 attempts
+When the console object write is called
+Then  it will print out "Total Shots: 5"
+
+InputValidator
+
+1.	Given the user inputs an angle of 100
+	When the input validator is called
+	Then an exception is thrown
+
+2.	Given the user inputs an angle of 1
+	When the input validator is called
+	Then no exception is thrown
+
+3.	Given the user inputs an angle of 90
+	When the input validator is called
+	Then no exception is thrown
+
+4.	Given the user inputs an angle of 0
+	When the input validator is called
+	Then a validation exception is thrown
+
+5.	Given the user inputs an angle of -1
+	When the input validator is called
+	Then a validation exception is thrown
+
+6.	Given the user inputs a velocity of -1
+	When the input validator is called
+	Then exception is thrown
+
+7.	Given the user inputs a velocity of 1
+	When the input validator is called
+	Then no exception is thrown
+
+8.	Given the user inputs a velocity of 20
+	When the input validator is called
+	Then no exception is thrown
+
+9.	Given the user inputs a velocity of 21
+	When the input validator is called
+	Then exception is thrown
+
+ShotCalculator
+
+1.	Given an angle of 30
+	And velocity of 5
+	When the ShotCalculator is called
+	Then it will return the x coordinate of 4
+	And it will return the the y coordinate of 3
+
+2.	Given an angle of 90
+	And velocity of 20
+	When the ShotCalculator is called
+	Then it will return the x coordinate of 0
+	And it will return the the y coordinate of 20
+
+3.	Given an angle of 90
+	And velocity of 20
+	When the ShotCalculator is called
+	Then it will return the x coordinate of 0
+	And it will return the the y coordinate of 20
+
+4.	Given an angle of 90
+	And velocity of 20
+	When the ShotCalculator is called
+	Then it will return the x coordinate of 0
+	And it will return the the y coordinate of 20
+
+TargetJudge
+
+FinalShotCounter (ShotAttemptCounter)
+
+TargetGenerator
+
+Map, Coordinates
