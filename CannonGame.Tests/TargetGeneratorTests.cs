@@ -9,7 +9,7 @@ public class TargetGeneratorTests
 
         for (int i = 0; i < 100; i++)
         {
-            Point target = targetGenerator.GenerateTarget(5, 20);
+            Point target = targetGenerator.GenerateTarget();
 
             Assert.NotNull(target);
             Assert.True(target.X > 0 && target.X <= 10);
