@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace CannonGame;
 
-namespace CannonGame
+public interface IConsoleIO
 {
-    internal interface IConsoleIO
-    {
-    }
+    int GetAngle();
+    int GetVelocity();
 }
