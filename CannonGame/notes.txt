@@ -12,7 +12,7 @@ ConsoleIO
 
 3.	Given the program requires a velocity from the user
 	When the console object write is called
-	Then it will print out "Please enter a velocity between 1 and 90"
+	Then it will print out "Please enter a velocity between 1 and 20"
 
 4.	Given the user has entered an velocity of 5
 	When the console object read is called

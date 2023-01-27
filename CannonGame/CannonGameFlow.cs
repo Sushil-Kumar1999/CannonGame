@@ -1,6 +1,4 @@
-﻿
-
-namespace CannonGame;
+﻿namespace CannonGame;
 
 public class CannonGameFlow : ICannonGameFlow
 {
@@ -22,6 +20,7 @@ public class CannonGameFlow : ICannonGameFlow
 
     public void Run()
     {
-        
+        int angle = _consoleIO.GetAngle();
+        int velocity = _consoleIO.GetVelocity();
     }
 }
