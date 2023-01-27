@@ -1,6 +1,7 @@
-﻿namespace CannonGame
+﻿namespace CannonGame;
+
+public interface IShotAttemptCounter
 {
-    internal interface IShotAttemptCounter
-    {
-    }
+    public int ShotCount { get; }
+    void Increment();
 }

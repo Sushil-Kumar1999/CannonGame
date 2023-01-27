@@ -2,18 +2,18 @@
 
 public class TargetGenerator : ITargetGenerator
 {
-    private readonly IInputValidator _inputValidator;
+    private readonly Random _random;
 
-    public TargetGenerator(IInputValidator inputValidator)
+    public TargetGenerator()
     {
-        _inputValidator = inputValidator;
+        _random = new Random(1);
     }
 
     public Point GenerateTarget(int angle, int velocity)
     {
-        _inputValidator.ValidateAngle(angle);
-        _inputValidator.ValidateVelocity(velocity);
+        int abscissa = 1 + _random.Next(10); // between 1 to 10 inclusive
+        int ordinate = 1 + _random.Next(10);
 
-        return new Point();
+        return new Point(abscissa, ordinate);
     }
 }

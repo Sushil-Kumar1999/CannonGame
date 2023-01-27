@@ -2,6 +2,6 @@
 
 public interface IInputValidator
 {
-    void ValidateAngle(int angle);
-    void ValidateVelocity(int velocity);
+    bool ValidateAngle(int angle);
+    bool ValidateVelocity(int velocity);
 }

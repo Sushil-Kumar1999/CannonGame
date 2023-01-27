@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CannonGame
+namespace CannonGame;
+
+public interface ITargetJudge
 {
-    internal interface ITargetJudge
-    {
-    }
+    bool JudgeShotHitsTarget(Point target, Point shot);
 }

@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace CannonGame;
 
-namespace CannonGame
+public class ShotAttemptCounter : IShotAttemptCounter
 {
-    internal class ShotAttemptCounter : IShotAttemptCounter
-    {
-    }
+	public int ShotCount { get; private set; }
+
+	public ShotAttemptCounter()
+	{
+		ShotCount = 0;
+	}
+
+	public void Increment()
+	{
+		ShotCount++;
+	}
 }

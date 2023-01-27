@@ -8,6 +8,12 @@ namespace CannonGame;
 
 public class Point
 {
-    public int X { get; set; }
-    public int Y { get; set; }
+    public Point(int x, int y)
+    {
+        X = x;
+        Y = y;
+    }
+
+    public int X { get; private set; }
+    public int Y { get; private set; }
 }

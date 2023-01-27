@@ -2,25 +2,25 @@
 
 ConsoleIO
 
-Given the program requires an angle from the user
-When the console object write is called
-Then it will print out "Please enter an angle between 1 and 90"
+1.	Given the program requires an angle from the user
+	When the console object write is called
+	Then it will print out "Please enter an angle between 1 and 90"
 
-Given the user has entered an angle of 5
-When the console object read is called
-Then it will return "5"
+2.	Given the user has entered an angle of 5
+	When the console object read is called
+	Then it will return "5"
 
-Given the program requires a velocity from the user
-When the console object write is called
-Then it will print out "Please enter a velocity between 1 and 90"
+3.	Given the program requires a velocity from the user
+	When the console object write is called
+	Then it will print out "Please enter a velocity between 1 and 90"
 
-Given the user has entered an velocity of 5
-When the console object read is called
-Then it will return "5"
+4.	Given the user has entered an velocity of 5
+	When the console object read is called
+	Then it will return "5"
 
-Given the user has hit the target after 5 attempts
-When the console object write is called
-Then  it will print out "Total Shots: 5"
+5.	Given the user has hit the target after 5 attempts
+	When the console object write is called
+	Then it will print out "Total Shots: 5"
 
 InputValidator
 
@@ -86,10 +86,37 @@ ShotCalculator
 	Then it will return the x coordinate of 0
 	And it will return the the y coordinate of 20
 
+TargetGenerator
+
+1.	Given the map has dimensions 10 x 10,
+	When the GenerateTarget method is called
+	Then a random x coordinate (1 <= x <= 10) is returned
+	Ans a random y coordinate (1 <= y <= 10) is returned
+
 TargetJudge
+
+1.	Given x coordinate of target is 5
+	And y coordinate of target is 5
+	And x coordinate of shot is 5
+	And y coordinate of shot is 5
+	When JudgeShotHitsTarget method is called
+	Then it returns true
+
+2.	Given x coordinate of target is 7
+	And y coordinate of target is 8
+	And x coordinate of shot is 2
+	And y coordinate of shot is 3
+	When JudgeShotHitsTarget method is called
+	Then it returns false
 
 FinalShotCounter (ShotAttemptCounter)
 
-TargetGenerator
+1.	Given the counter value is 0
+	When the increment method is called
+	Then the counter value is increased to 1
+
+2. Given the counter value is 1
+	When the increment method is called
+	Then the counter value is increased to 2
 
 Map, Coordinates
