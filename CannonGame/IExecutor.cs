@@ -1,6 +1,6 @@
 ﻿namespace CannonGame;
 
-internal interface IExecutor
+public interface IExecutor
 {
     public void Execute();
 }

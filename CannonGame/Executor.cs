@@ -1,9 +1,16 @@
 ﻿namespace CannonGame;
 
-internal class Executor : IExecutor
+public class Executor : IExecutor
 {
+    private readonly ICannonGameFlow _cannonGameFlow;
+
+    public Executor(ICannonGameFlow cannonGameFlow)
+    {
+        _cannonGameFlow = cannonGameFlow;
+    }
+
     public void Execute()
     {
-        throw new NotImplementedException();
+        _cannonGameFlow.Run();
     }
 }
