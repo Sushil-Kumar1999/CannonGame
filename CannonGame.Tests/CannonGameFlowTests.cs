@@ -39,7 +39,9 @@ public class CannonGameFlowTests
         _shotAttemptCounter.Setup(x => x.Increment());
         _consoleIO.Setup(x => x.ShowShot(It.Is<Point>(p => p.X == testShot.X && p.Y == testShot.Y)));
         _targetJudge.Setup(x => x.JudgeShotHitsTarget(testTarget, testShot)).Returns(true);
-        _consoleIO.Setup(x => x.DisplayAttempts(It.IsAny<int>()));
+        int testShotCount = 12;
+        _shotAttemptCounter.Setup(x => x.ShotCount).Returns(testShotCount);
+        _consoleIO.Setup(x => x.DisplayAttempts(It.Is<int>(x => x == testShotCount)));
 
         // Act
         ICannonGameFlow flow = new CannonGameFlow(_consoleIO.Object, _targetGenerator.Object, _shotCalculator.Object,
