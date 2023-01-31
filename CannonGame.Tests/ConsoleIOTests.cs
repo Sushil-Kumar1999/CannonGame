@@ -76,4 +76,37 @@ public class ConsoleIOTests
         _consoleWrapper.Verify(x => x.Read(), Times.Exactly(6));
         Assert.Equal(5, velocity);
     }
+
+    [Fact]
+    public void DisplayAttempts_WritesToConsole()
+    {
+        _consoleWrapper.Setup(x => x.Write(It.IsAny<string>()));
+        IConsoleIO consoleIO = new ConsoleIO(_consoleWrapper.Object);
+
+        consoleIO.DisplayAttempts(5);
+
+        _consoleWrapper.Verify(x => x.Write("Your shot hit the target. You took 5 attempts"));
+    }
+
+    [Fact]
+    public void ShowTarget_WritesToConsole()
+    {
+        _consoleWrapper.Setup(x => x.Write(It.IsAny<string>()));
+        IConsoleIO consoleIO = new ConsoleIO(_consoleWrapper.Object);
+
+        consoleIO.ShowTarget(new Point(4, 7));
+
+        _consoleWrapper.Verify(x => x.Write("Target is X: 4 and Y: 7"));
+    }
+
+    [Fact]
+    public void ShowShot_WritesToConsole()
+    {
+        _consoleWrapper.Setup(x => x.Write(It.IsAny<string>()));
+        IConsoleIO consoleIO = new ConsoleIO(_consoleWrapper.Object);
+
+        consoleIO.ShowShot(new Point(4, 7));
+
+        _consoleWrapper.Verify(x => x.Write($"Shot landed at X: 4 and Y: 7"));
+    }
 }

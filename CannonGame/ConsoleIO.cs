@@ -35,4 +35,19 @@ public class ConsoleIO : IConsoleIO
 
         return int.Parse(input);
     }
+
+    public void ShowShot(Point shot)
+    {
+        _console.Write($"Shot landed at X: {shot.X} and Y: {shot.Y}");
+    }
+
+    public void DisplayAttempts(int attemptCount)
+    {
+        _console.Write($"Your shot hit the target. You took {attemptCount} attempts");
+    }
+
+    public void ShowTarget(Point target)
+    {
+        _console.Write($"Target is X: {target.X} and Y: {target.Y}");
+    }
 }
