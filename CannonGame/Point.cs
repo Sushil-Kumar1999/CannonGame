@@ -16,4 +16,18 @@ public class Point
 
     public int X { get; private set; }
     public int Y { get; private set; }
+
+    public override bool Equals(Object obj)
+    {
+        //Check for null and compare run-time types.
+        if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+        {
+            return false;
+        }
+        else
+        {
+            Point p = (Point)obj;
+            return (X == p.Y) && (Y == p.Y);
+        }
+    }
 }

@@ -1,4 +1,6 @@
-﻿namespace CannonGame.Tests;
+﻿using CannonGame.Interfaces;
+
+namespace CannonGame.Tests;
 
 public class ConsoleWrapperTests
 {

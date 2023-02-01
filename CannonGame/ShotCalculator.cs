@@ -1,4 +1,6 @@
-﻿namespace CannonGame;
+﻿using CannonGame.Interfaces;
+
+namespace CannonGame;
 
 public class ShotCalculator : IShotCalculator
 {

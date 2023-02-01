@@ -1,4 +1,4 @@
-﻿namespace CannonGame;
+﻿namespace CannonGame.Interfaces;
 
 public interface IShotAttemptCounter
 {

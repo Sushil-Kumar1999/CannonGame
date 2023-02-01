@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using CannonGame.Interfaces;
+using Moq;
 
 namespace CannonGame.Tests;
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using CannonGame.Registrations;
+using CannonGame.Interfaces;
 
 namespace CannonGame;
 
