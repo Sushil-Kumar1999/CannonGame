@@ -52,4 +52,20 @@ public class ConsoleIO : IConsoleIO
     {
         _console.Write($"Target is X: {target.X} and Y: {target.Y}");
     }
+
+    public ShotType GetShotType()
+    {
+        string input = string.Empty;
+        bool isInt = false;
+        int num = 0;
+        do
+        {
+            _console.Write("Choose shot type. Enter 1 for shot, 2 for mortar: ");
+            input = _console.Read();
+            isInt = int.TryParse(input, out num);
+        }
+        while (!isInt || !Enum.IsDefined(typeof(ShotType), num));
+
+        return (ShotType)num;
+    }
 }

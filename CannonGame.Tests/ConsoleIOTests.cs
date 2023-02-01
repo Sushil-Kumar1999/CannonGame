@@ -110,4 +110,40 @@ public class ConsoleIOTests
 
         _consoleWrapper.Verify(x => x.Write($"Shot landed at X: 4 and Y: 7"));
     }
+
+    [Fact]
+    public void GetShotType_GetsUserInputOnFirstAttempt()
+    {
+        _consoleWrapper.Setup(x => x.Write(It.IsAny<string>()));
+        _consoleWrapper.Setup(x => x.Read()).Returns("1");
+        IConsoleIO consoleIO = new ConsoleIO(_consoleWrapper.Object);
+
+        ShotType shotType  = consoleIO.GetShotType();
+
+        _consoleWrapper.Verify(x => x.Write("Choose shot type. Enter 1 for shot, 2 for mortar: "), Times.Once());
+        _consoleWrapper.Verify(x => x.Read(), Times.Once());
+        Assert.Equal(ShotType.Shot, shotType);
+    }
+
+    [Fact]
+    public void GetShotType_LoopsUntilUserInputsValidNumber()
+    {
+        _consoleWrapper.Setup(x => x.Write(It.IsAny<string>()));
+        _consoleWrapper.SetupSequence(x => x.Read())
+                .Returns("Hello")
+                .Returns("")
+                .Returns(string.Empty)
+                .Returns(" ")
+                .Returns("55hjib")
+                .Returns("-1")
+                .Returns("3")
+                .Returns("2");
+        IConsoleIO consoleIO = new ConsoleIO(_consoleWrapper.Object);
+
+        ShotType shotType = consoleIO.GetShotType();
+
+        _consoleWrapper.Verify(x => x.Write("Choose shot type. Enter 1 for shot, 2 for mortar: "), Times.Exactly(8));
+        _consoleWrapper.Verify(x => x.Read(), Times.Exactly(8));
+        Assert.Equal(ShotType.Mortar, shotType);
+    }
 }

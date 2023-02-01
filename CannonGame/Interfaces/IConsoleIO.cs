@@ -7,4 +7,5 @@ public interface IConsoleIO
     void ShowShot(Point shot);
     void DisplayAttempts(int attemptCount);
     void ShowTarget(Point target);
+    ShotType GetShotType();
 }
