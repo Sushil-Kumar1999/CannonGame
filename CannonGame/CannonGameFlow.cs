@@ -10,11 +10,11 @@ public class CannonGameFlow : ICannonGameFlow
     private readonly IShotAttemptCounter _shotAttemptCounter;
     private readonly ITargetJudge _targetJudge;
     private readonly IInputValidator _inputValidator;
-    private readonly IConsoleWrapper _consoleWrapper;
+    private readonly IMortarTargetJudge _mortarTargetJudge;
 
     public CannonGameFlow(IConsoleIO consoleIO, ITargetGenerator targetGenerator, IShotCalculator shotCalculator,
                           IShotAttemptCounter shotAttemptCounter, ITargetJudge targetJudge, IInputValidator inputValidator,
-                          IConsoleWrapper consoleWrapper)
+                          IMortarTargetJudge mortarTargetJudge)
     {
         _consoleIO = consoleIO;
         _targetGenerator = targetGenerator;
@@ -22,7 +22,7 @@ public class CannonGameFlow : ICannonGameFlow
         _shotAttemptCounter = shotAttemptCounter;
         _targetJudge = targetJudge;
         _inputValidator = inputValidator;
-        _consoleWrapper = consoleWrapper;
+        _mortarTargetJudge = mortarTargetJudge;
     }
 
     public void Run()
@@ -56,7 +56,13 @@ public class CannonGameFlow : ICannonGameFlow
             Point shot = _shotCalculator.CalculateShot(angle, velocity);
             _shotAttemptCounter.Increment();
             _consoleIO.ShowShot(shot);
-            shotHitsTarget = _targetJudge.JudgeShotHitsTarget(target, shot);
+
+            shotHitsTarget = shotType switch
+            {
+                ShotType.Shot => _targetJudge.JudgeShotHitsTarget(target, shot),
+                ShotType.Mortar => _mortarTargetJudge.JudgeShotHitsTarget(target, shot),
+                _ => throw new NotImplementedException()
+            };
         }
         while (!shotHitsTarget);
 
