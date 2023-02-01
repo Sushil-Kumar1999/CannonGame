@@ -5,25 +5,33 @@ namespace CannonGame.Tests;
 public class InputValidatorTests
 {
     [Theory]
-    [InlineData(1)]
-    [InlineData(45)]
-    [InlineData(90)]
-    public void ValidateAngle_ReturnsTrue_WhenAngleIsValid(int angle)
+    [InlineData(1, ShotType.Shot)]
+    [InlineData(45, ShotType.Shot)]
+    [InlineData(90, ShotType.Shot)]
+    [InlineData(15, ShotType.Mortar)]
+    [InlineData(25, ShotType.Mortar)]
+    public void ValidateAngle_ReturnsTrue_WhenAngleIsValid(int angle, ShotType shotType)
     {
         IInputValidator validator = new InputValidator();
-        bool isValid = validator.ValidateAngle(angle);
+        bool isValid = validator.ValidateAngle(angle, shotType);
         Assert.True(isValid);
     }
 
     [Theory]
-    [InlineData(-1)]
-    [InlineData(0)]
-    [InlineData(91)]
-    [InlineData(100)]
-    public void ValidateAngle_ReturnsFalse_WhenAngleIsNotValid(int angle)
+    [InlineData(-1, ShotType.Shot)]
+    [InlineData(0, ShotType.Shot)]
+    [InlineData(91, ShotType.Shot)]
+    [InlineData(100, ShotType.Shot)]
+    [InlineData(-1, ShotType.Mortar)]
+    [InlineData(0, ShotType.Mortar)]
+    [InlineData(91, ShotType.Mortar)]
+    [InlineData(100, ShotType.Mortar)]
+    [InlineData(89, ShotType.Mortar)]
+    [InlineData(2, ShotType.Mortar)]
+    public void ValidateAngle_ReturnsFalse_WhenAngleIsNotValid(int angle, ShotType shotType)
     {
         IInputValidator validator = new InputValidator();
-        bool isValid = validator.ValidateAngle(angle);
+        bool isValid = validator.ValidateAngle(angle, shotType);
         Assert.False(isValid);
     }
 

@@ -4,9 +4,16 @@ namespace CannonGame;
 
 public class InputValidator : IInputValidator
 {
-    public bool ValidateAngle(int angle)
+    public bool ValidateAngle(int angle, ShotType shotType)
     {
-        return angle >= 1 && angle <= 90;   
+        bool isInValidRange = angle >= 1 && angle <= 90;
+
+        return shotType switch
+        {
+            ShotType.Shot => isInValidRange,
+            ShotType.Mortar => isInValidRange && angle % 5 == 0,
+            _ => false,
+        };
     }
 
     public bool ValidateVelocity(int velocity)
