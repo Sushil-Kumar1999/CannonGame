@@ -10,9 +10,11 @@ public class CannonGameFlow : ICannonGameFlow
     private readonly IShotAttemptCounter _shotAttemptCounter;
     private readonly ITargetJudge _targetJudge;
     private readonly IInputValidator _inputValidator;
+    private readonly IConsoleWrapper _consoleWrapper;
 
     public CannonGameFlow(IConsoleIO consoleIO, ITargetGenerator targetGenerator, IShotCalculator shotCalculator,
-                          IShotAttemptCounter shotAttemptCounter, ITargetJudge targetJudge, IInputValidator inputValidator)
+                          IShotAttemptCounter shotAttemptCounter, ITargetJudge targetJudge, IInputValidator inputValidator,
+                          IConsoleWrapper consoleWrapper)
     {
         _consoleIO = consoleIO;
         _targetGenerator = targetGenerator;
@@ -20,12 +22,15 @@ public class CannonGameFlow : ICannonGameFlow
         _shotAttemptCounter = shotAttemptCounter;
         _targetJudge = targetJudge;
         _inputValidator = inputValidator;
+        _consoleWrapper = consoleWrapper;
     }
 
     public void Run()
     {
         Point target = _targetGenerator.GenerateTarget();
         _consoleIO.ShowTarget(target);
+
+        ShotType shotType = _consoleIO.GetShotType();
 
         bool shotHitsTarget;
         do
@@ -36,7 +41,7 @@ public class CannonGameFlow : ICannonGameFlow
             do
             {
                 angle = _consoleIO.GetAngle();
-                isInputValid = _inputValidator.ValidateAngle(angle);
+                isInputValid = _inputValidator.ValidateAngle(angle, shotType);
 
             } while (!isInputValid);
 

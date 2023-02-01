@@ -16,5 +16,6 @@ public static class ContainerBuilder
         services.AddScoped<IInputValidator, InputValidator>();
         services.AddScoped<IConsoleWrapper, ConsoleWrapper>();
         services.AddScoped<ICannonGameFlow, CannonGameFlow>();
+        services.AddScoped<IMortarTargetJudge, MortarTargetJudge>();
     }
 }

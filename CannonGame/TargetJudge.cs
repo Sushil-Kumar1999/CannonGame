@@ -4,7 +4,7 @@ namespace CannonGame;
 
 public class TargetJudge : ITargetJudge
 {
-    public bool JudgeShotHitsTarget(Point target, Point shot)
+    public virtual bool JudgeShotHitsTarget(Point target, Point shot)
     {
         return target.Equals(shot);
     }
