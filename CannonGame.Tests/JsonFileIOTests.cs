@@ -71,9 +71,7 @@ public class JsonFileIOTests
         JsonFileIO jsonFileIO = new JsonFileIO(mockFileSystem);
         jsonFileIO.UpdateData(testData);
 
-        Console.WriteLine(mockFileData.ToString());
-        MockFileInfoFactory factory = (MockFileInfoFactory)jsonFileIO._fileSystem.FileInfo;
-        string savedData = factory.FileSystem.File.OpenText(filePath).ReadToEnd();
+        string savedData = mockFileSystem.File.OpenText(filePath).ReadToEnd();
         string expectedData = """[{"Username":"Test2","Score":22,"TimeElapsed":50}]""";
 
         Assert.Equal(expectedData, savedData);
