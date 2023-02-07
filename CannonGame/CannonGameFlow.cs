@@ -1,4 +1,5 @@
-﻿using CannonGame.Interfaces;
+﻿using CannonGame.Entities;
+using CannonGame.Interfaces;
 
 namespace CannonGame;
 
@@ -11,10 +12,12 @@ public class CannonGameFlow : ICannonGameFlow
     private readonly ITargetJudge _targetJudge;
     private readonly IInputValidator _inputValidator;
     private readonly IMortarTargetJudge _mortarTargetJudge;
+    private readonly ITimeTracker _timeTracker;
+    private readonly IUserDataService _userDataService;
 
     public CannonGameFlow(IConsoleIO consoleIO, ITargetGenerator targetGenerator, IShotCalculator shotCalculator,
                           IShotAttemptCounter shotAttemptCounter, ITargetJudge targetJudge, IInputValidator inputValidator,
-                          IMortarTargetJudge mortarTargetJudge)
+                          IMortarTargetJudge mortarTargetJudge, ITimeTracker timeTracker, IUserDataService userDataService)
     {
         _consoleIO = consoleIO;
         _targetGenerator = targetGenerator;
@@ -23,12 +26,17 @@ public class CannonGameFlow : ICannonGameFlow
         _targetJudge = targetJudge;
         _inputValidator = inputValidator;
         _mortarTargetJudge = mortarTargetJudge;
+        _timeTracker = timeTracker;
+        _userDataService = userDataService;
     }
 
     public void Run()
     {
         Point target = _targetGenerator.GenerateTarget();
         _consoleIO.ShowTarget(target);
+
+        string username =  _consoleIO.GetUsername();
+        _timeTracker.StartTimer();
 
         ShotType shotType = _consoleIO.GetShotType();
 
@@ -66,6 +74,11 @@ public class CannonGameFlow : ICannonGameFlow
         }
         while (!shotHitsTarget);
 
+        _timeTracker.StopTimer();
         _consoleIO.DisplayAttempts(_shotAttemptCounter.ShotCount);
+
+        _userDataService.AddUser(new User(username, _shotAttemptCounter.ShotCount, _timeTracker.Time));
+
+        _consoleIO.PrintUsers(_userDataService.GetUsers());
     }
 }

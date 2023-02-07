@@ -12,6 +12,8 @@ public class CannonGameFlowTests
     private readonly Mock<ITargetJudge> _targetJudge;
     private readonly Mock<IInputValidator> _inputValidator;
     private readonly Mock<IMortarTargetJudge> _mortarTargetJudge;
+    private readonly Mock<ITimeTracker> _timeTracker;
+    private readonly Mock<IUserDataService> _userDataService;
 
     public CannonGameFlowTests()
     {
@@ -22,6 +24,8 @@ public class CannonGameFlowTests
         _targetJudge = new Mock<ITargetJudge>();
         _inputValidator = new Mock<IInputValidator>();
         _mortarTargetJudge = new Mock<IMortarTargetJudge>();
+        _timeTracker = new Mock<ITimeTracker>();
+        _userDataService = new Mock<IUserDataService>();
     }
 
     [Fact]
@@ -51,7 +55,7 @@ public class CannonGameFlowTests
         // Act
         ICannonGameFlow flow = new CannonGameFlow(_consoleIO.Object, _targetGenerator.Object, _shotCalculator.Object,
                                                 _shotAttemptCounter.Object, _targetJudge.Object, _inputValidator.Object,
-                                                _mortarTargetJudge.Object);
+                                                _mortarTargetJudge.Object, _timeTracker.Object, _userDataService.Object);
         flow.Run();
 
         // Assert
@@ -96,7 +100,7 @@ public class CannonGameFlowTests
         // Act
         ICannonGameFlow flow = new CannonGameFlow(_consoleIO.Object, _targetGenerator.Object, _shotCalculator.Object,
                                                 _shotAttemptCounter.Object, _targetJudge.Object, _inputValidator.Object,
-                                                _mortarTargetJudge.Object);
+                                                _mortarTargetJudge.Object, _timeTracker.Object, _userDataService.Object);
         flow.Run();
 
         // Assert

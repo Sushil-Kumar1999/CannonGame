@@ -1,13 +1,5 @@
-﻿using CannonGame.Entities;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.IO.Abstractions;
+﻿using Moq;
 using System.IO.Abstractions.TestingHelpers;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CannonGame.Tests;
 
@@ -82,7 +74,7 @@ public class JsonFileIOTests
     //{
     //    var mockFileSystem = new MockFileSystem();
     //    mockFileSystem.AddFile()
-    //    var mockFile = new MockFile;
+    //    var mockFile = Mock.Get(mockFileSystem.File);
 
     //    mockFile.Setup(f => f.Exists(It.IsAny<string>())).Returns(false);
     //    mockFile.Setup(f => f.Create(filePath));
@@ -91,5 +83,24 @@ public class JsonFileIOTests
     //    IList<TestUser> actualOutput = jsonFileIO.ListData<TestUser>();
 
     //    mockFile.Verify(f => f.Exists(It.IsAny<string>()), Times.Once);
+    //}
+
+    //[Fact]
+    //public void GivenNoFileExists_WhenUpdateDataCalled_ThenNewFileCreated()
+    //{
+    //    var mockFileSystem = new MockFileSystem();
+    //    var mockFileData = new MockFileData("");
+    //    mockFileSystem.AddFile(filePath, mockFileData);
+
+    //    var mockFile = new MockFile(mockFileSystem);
+
+    //    mockFile.Setup(f => f.Exists(It.IsAny<string>())).Returns(false);
+    //    mockFile.Setup(f => f.Create(filePath));
+
+    //    JsonFileIO jsonFileIO = new JsonFileIO(mockFileSystem);
+    //    IList<TestUser> actualOutput = jsonFileIO.ListData<TestUser>();
+
+    //    mockFile.Verify(f => f.Exists(It.IsAny<string>()), Times.Once);
+    //    mockFile.Verify(f => f.Create(filePath), Times.Once);
     //}
 }
