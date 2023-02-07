@@ -1,4 +1,6 @@
-﻿namespace CannonGame.Interfaces;
+﻿using CannonGame.Entities;
+
+namespace CannonGame.Interfaces;
 
 public interface IConsoleIO
 {
@@ -8,4 +10,6 @@ public interface IConsoleIO
     void DisplayAttempts(int attemptCount);
     void ShowTarget(Point target);
     ShotType GetShotType();
+    string GetUsername();
+    void PrintUsers(IEnumerable<User> users);
 }

@@ -17,6 +17,11 @@ public class User
         return Username == other.Username && Score == other.Score && TimeElapsed == other.TimeElapsed;
     }
 
+    public override string ToString()
+    {
+        return $"Username: {Username} Score: {Score} TimeElapsed: {TimeElapsed}";
+    }
+
     public string Username { get; }
     public int Score { get; }
     public float TimeElapsed { get; }

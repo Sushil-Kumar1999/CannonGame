@@ -1,4 +1,5 @@
-﻿using CannonGame.Interfaces;
+﻿using CannonGame.Entities;
+using CannonGame.Interfaces;
 
 namespace CannonGame;
 
@@ -67,5 +68,19 @@ public class ConsoleIO : IConsoleIO
         while (!isInt || !Enum.IsDefined(typeof(ShotType), num));
 
         return (ShotType)num;
+    }
+
+    public string GetUsername()
+    {
+        _console.Write("Please enter your username: ");
+        return _console.Read();
+    }
+
+    public void PrintUsers(IEnumerable<User> users)
+    {
+        foreach(User user in users)
+        {
+            _console.Write(user.ToString());
+        }
     }
 }
