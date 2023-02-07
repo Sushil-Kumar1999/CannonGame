@@ -22,5 +22,6 @@ public static class ContainerBuilder
         services.AddScoped<IUserDataService, UserDataService>();
         services.AddScoped<IJsonFileIO, JsonFileIO>();
         services.AddScoped<IFileSystem, FileSystem>();
+        services.AddScoped<ITimeTracker, TimeTracker>();
     }
 }
